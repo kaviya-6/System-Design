@@ -1,0 +1,46 @@
+
+interface InputDevice {
+    void input();
+}
+
+
+class Keyboard implements InputDevice {
+    public void input() {
+        System.out.println("Typing...");
+    }
+}
+
+class Mouse implements InputDevice {
+    public void input() {
+        System.out.println("Clicking...");
+    }
+}
+
+
+class Computer {
+    private InputDevice device;
+
+    public Computer(InputDevice device) {
+        this.device = device;
+    }
+
+    public void use() {
+        device.input();
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        Computer c1 = new Computer(new Keyboard());
+        c1.use();
+
+        Computer c2 = new Computer(new Mouse());
+        c2.use();
+    }
+}
+
+
+// ✔️ Now you can plug ANY new device
+// ✔️ No change inside Computer
+// ✔️ Flexible, clean, follows DIP
